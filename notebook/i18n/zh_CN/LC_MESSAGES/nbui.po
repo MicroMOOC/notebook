@@ -127,7 +127,7 @@ msgstr "菜单"
 
 #: notebook/templates/notebook.html:65 notebook/templates/notebook.html:254
 msgid "Kernel"
-msgstr "服务"
+msgstr "Loading..."
 
 #: notebook/templates/notebook.html:68
 msgid "This notebook is read-only"

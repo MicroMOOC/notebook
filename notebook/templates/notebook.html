@@ -1,4 +1,4 @@
-{% extends "page.html" %}
+{% extends "page-no-head.html" %}
 
 {% block favicon %}<link id="favicon" rel="shortcut icon" type="image/x-icon" href="{{static_url("base/images/favicon-notebook.ico") }}">{% endblock %}
 
@@ -35,46 +35,28 @@ data-notebook-path="{{notebook_path | urlencode}}"
 {% endblock %}
 
 
-{% block headercontainer %}
-
-
-<span id="save_widget" class="save_widget">
-    <span id="notebook_name" class="filename"></span>
-    <span class="checkpoint_status"></span>
-    <span class="autosave_status"></span>
-</span>
-
-{{super()}}
-
-<span id="kernel_logo_widget">
-  {% block kernel_logo_widget %}
-  <img class="current_kernel_logo" alt="Current Kernel Logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
-  {% endblock %}
-</span>
-
-{% endblock headercontainer %}
-
 {% block header %}
+
 <div id="menubar-container" class="container">
-<div id="menubar">
+
+    <div>
+        <p id="kernel_indicator" class="navbar-text indicator_area">
+            <span class="kernel_indicator_name">{% trans %}Kernel{% endtrans %}</span>
+            <i id="kernel_indicator_icon"></i>
+          </p>
+          <i id="readonly-indicator" class="navbar-text" title='{% trans %}This notebook is read-only{% endtrans %}'>
+              <span class="fa-stack">
+                  <i class="fa fa-save fa-stack-1x"></i>
+                  <i class="fa fa-ban fa-stack-2x text-danger"></i>
+              </span>
+          </i>
+          <i id="modal_indicator" class="navbar-text"></i>
+          <span id="notification_area"></span>
+    </div>
+
+<div id="menubar"  style="display: none;">
     <div id="menus" class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <button type="button" class="btn btn-default navbar-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <i class="fa fa-bars"></i>
-              <span class="navbar-text">{% trans %}Menu{% endtrans %}</span>
-            </button>
-            <p id="kernel_indicator" class="navbar-text indicator_area">
-              <span class="kernel_indicator_name">{% trans %}Kernel{% endtrans %}</span>
-              <i id="kernel_indicator_icon"></i>
-            </p>
-            <i id="readonly-indicator" class="navbar-text" title='{% trans %}This notebook is read-only{% endtrans %}'>
-                <span class="fa-stack">
-                    <i class="fa fa-save fa-stack-1x"></i>
-                    <i class="fa fa-ban fa-stack-2x text-danger"></i>
-                </span>
-            </i>
-            <i id="modal_indicator" class="navbar-text"></i>
-            <span id="notification_area"></span>
+        <div class="container-fluid" >
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="dropdown"><a href="#" class="dropdown-toggle" id="filelink" data-toggle="dropdown" aria-haspopup="true" aria-controls="file_menu">{% trans %}File{% endtrans %}</a>

@@ -1,14 +1,11 @@
 #notification_area {
-    .pull-right();
     z-index: 10;
 }
 
 [dir="rtl"] #notification_area {
-    .pull-left();
 }
 
 .indicator_area {
-    .pull-right();
     color: @navbar-default-link-color;
     margin-left: 5px;
     margin-right: 5px;
@@ -16,17 +13,17 @@
     z-index: 10;
     text-align: center;
     width: auto;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    .pull-left();
 }
 
 [dir="rtl"] .indicator_area {
-    .pull-left();
+
 }
 
 #kernel_indicator {
     .indicator_area();
-    
-    border-left: 1px solid;
-    
     .kernel_indicator_name {
         padding-left: 5px;
         padding-right: 5px;
@@ -34,13 +31,10 @@
 }
 
 [dir="rtl"] #kernel_indicator {
-    .pull-left();
     border-left: 0;
-    border-right : 1px solid;
 }
 
 #modal_indicator {
-    .pull-right();
     .indicator_area();
 }
 
@@ -49,7 +43,6 @@
 } 
 
 #readonly-indicator {
-    .pull-right();
     .indicator_area();
 
     margin-top: 2px;
