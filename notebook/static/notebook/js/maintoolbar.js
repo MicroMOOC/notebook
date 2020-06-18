@@ -33,23 +33,34 @@ define([
     MainToolBar.prototype._make = function () {
         var grps = [
           [
-            [
-                'jupyter-notebook:save-notebook',
-                'jupyter-notebook:insert-cell-below',
-                'jupyter-notebook:delete-cell',
-                'jupyter-notebook:cut-cell',
-                'jupyter-notebook:copy-cell',
-                'jupyter-notebook:paste-cell-below',
-                'jupyter-notebook:move-cell-up',
-                'jupyter-notebook:move-cell-down',
-                new toolbar.Button('jupyter-notebook:run-cell-and-select-next',
-                {label: i18n.msg._('Run')}),
-                'jupyter-notebook:interrupt-kernel',
-                 'jupyter-notebook:confirm-restart-kernel',
-                 'jupyter-notebook:confirm-restart-kernel-and-run-all-cells',
+            ['jupyter-notebook:save-notebook'],
+            'save-notbook'
+          ],
+          [
+            ['jupyter-notebook:insert-cell-below'],
+            'insert_above_below'],
+          [
+            ['jupyter-notebook:cut-cell',
+             'jupyter-notebook:copy-cell',
+             'jupyter-notebook:paste-cell-below'
+            ] ,
+            'cut_copy_paste'],
+          [
+            ['jupyter-notebook:move-cell-up',
+             'jupyter-notebook:move-cell-down'
             ],
-            'func_btn'
-          ]
+            'move_up_down'],
+          [ [new toolbar.Button('jupyter-notebook:run-cell-and-select-next',
+                {label: i18n.msg._('Run')}),
+             'jupyter-notebook:interrupt-kernel',
+             'jupyter-notebook:confirm-restart-kernel',
+             'jupyter-notebook:confirm-restart-kernel-and-run-all-cells'
+            ],
+            'run_int'],
+         ['<add_celltype_list>'],
+         [
+           ['jupyter-notebook:show-command-palette'],
+           'cmd_palette']
         ];
         this.construct(grps);
     };
@@ -59,7 +70,6 @@ define([
     // add a cell type drop down to the maintoolbar.
     // triggered when the pseudo action `<add_celltype_list>` is
     // encountered when building a toolbar.
-    /*
     MainToolBar.prototype._pseudo_actions.add_celltype_list = function () {
         var that = this;
         var multiselect = $('<option/>').attr('value','multiselect').attr('disabled','').text('-');
@@ -120,7 +130,6 @@ define([
         return sel;
 
     };
-    */
 
     return {'MainToolBar': MainToolBar};
 });

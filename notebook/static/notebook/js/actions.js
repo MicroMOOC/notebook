@@ -504,7 +504,6 @@ define([
             cmd: i18n.msg._('delete cells'),
             help: i18n.msg._('delete selected cells'),
             help_index : 'ej',
-            icon: 'fa-minus',
             handler : function (env) {
                 env.notebook.delete_cell();
             }
