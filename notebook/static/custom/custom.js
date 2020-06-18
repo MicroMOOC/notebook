@@ -78,7 +78,7 @@ define([
 	'jquery',
 	'base/js/namespace',
 	'base/js/promises',
-	'./customtoolbar'
+	'./js/customtoolbar'
 ], function($,IPython, promises,customtoolbar) {
 	promises.app_initialized.then(function (appName) {
 		if (appName !== 'NotebookApp') return;

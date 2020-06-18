@@ -1,0 +1,65 @@
+/*
+    notebook.html  css
+*/
+
+#kernel_indicator {
+    float: left !important;
+    color: #565656;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 11px;
+    z-index: 10;
+    text-align: center;
+    width: auto;
+    border-left:  none;
+}
+.indicator_area {
+    float: left !important;
+    color: #565656;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 11px;
+    z-index: 10;
+    text-align: center;
+    width: auto;
+}
+.navbar-text {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+#readonly-indicator {
+    float: left !important;
+    color: #565656;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 11px;
+    z-index: 10;
+    text-align: center;
+    width: auto;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    display: none;
+}
+
+#notification_area {
+    float: left !important;
+    z-index: 10;
+}
+
+#modal_indicator {
+    float: left !important;
+    color: #565656;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 11px;
+    z-index: 10;
+    text-align: center;
+    width: auto;
+}
+
+#maintoolbar {
+    margin-left: 5px;
+}

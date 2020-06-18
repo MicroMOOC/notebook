@@ -29,13 +29,17 @@ define([
                 'jupyter-notebook:paste-cell-below',
                 'jupyter-notebook:move-cell-up',
                 'jupyter-notebook:move-cell-down',
-                new toolbar.Button('jupyter-notebook:run-cell-and-select-next',
-                {label: i18n.msg._('Run')}),
-                'jupyter-notebook:interrupt-kernel',
-                 'jupyter-notebook:confirm-restart-kernel',
-                 'jupyter-notebook:confirm-restart-kernel-and-run-all-cells',
             ],
             'func_btn'
+          ],
+          [
+            [
+                new toolbar.Button('jupyter-notebook:run-cell-and-select-next',{label: i18n.msg._('Run')}),
+                // 'jupyter-notebook:interrupt-kernel',
+                //  'jupyter-notebook:confirm-restart-kernel',
+                //  'jupyter-notebook:confirm-restart-kernel-and-run-all-cells',
+            ],
+            'server_btn'
           ]
         ];
         this.construct(grps);

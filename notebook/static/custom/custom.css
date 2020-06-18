@@ -6,3 +6,9 @@ mainly to be overridden in profile/static/custom/custom.css
 This will always be an empty file
 */
 
+@import "css/notebook.css";
+
+.clearfix {
+    clear: both;
+}
+
