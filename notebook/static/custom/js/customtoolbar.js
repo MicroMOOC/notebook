@@ -7,10 +7,15 @@ define([
 ], function($, requirejs, toolbar, celltoolbar, i18n) {
     "use strict";
 
-    var MainToolBar = function (selector, options) {
+    var MainToolBar = function (selector, IPython) {
+      // 移除已生成的工具栏按钮
+      $(IPython.toolbar.selector).empty();
+      var options = {
+          notebook: IPython.notebook,
+          events: IPython.events,
+          actions: IPython.actions,
+      };
         toolbar.ToolBar.apply(this, [selector, options] );
-        this.events = options.events;
-        this.notebook = options.notebook;
         this._make();
         Object.seal(this);
     };
@@ -45,8 +50,12 @@ define([
         this.construct(grps);
     };
 
-    MainToolBar.prototype._pseudo_actions = {};
+    var reload = function (IPython) {
+      IPython.toolbar = new MainToolBar('#maintoolbar-container', IPython);
+    }
 
-    return {'CustomToolBar': MainToolBar};
+    return {
+      reload
+    };
 });
    

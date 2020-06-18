@@ -78,19 +78,15 @@ define([
 	'jquery',
 	'base/js/namespace',
 	'base/js/promises',
-	'./js/customtoolbar'
-], function($,IPython, promises,customtoolbar) {
+	'./js/customtoolbar',
+	'./js/customactions'
+], function($,IPython, promises, customtoolbar, customactions) {
 	promises.app_initialized.then(function (appName) {
 		if (appName !== 'NotebookApp') return;
-		// 移除已生成的工具栏按钮
-		$(IPython.toolbar.selector).empty();
-		// 重新添加工具栏
-		var toolbar = new customtoolbar.CustomToolBar('#maintoolbar-container', {
-			notebook: IPython.notebook,
-			events: IPython.events,
-			actions: IPython.actions
-		});
-		IPython.toolbar = toolbar;
+		// overwrite actions
+		customactions.reload(IPython);
+		// overwrite 工具栏
+		customtoolbar.reload(IPython);
 		// 移除全屏遮盖层
 		$('#load_layer').remove();
 	});

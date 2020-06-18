@@ -44,6 +44,11 @@
     display: none;
 }
 
+.navbar-btn.btn-xs {
+    margin-top: 5px;
+    margin-bottom: 4px;
+}
+
 #notification_area {
     float: left !important;
     z-index: 10;
