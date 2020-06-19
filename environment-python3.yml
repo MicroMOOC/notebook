@@ -12,9 +12,3 @@ dependencies:
 #- python=3.6.*
 #- scikit-image=0.16.*
 #- scipy=1.3.*
-
-# depend
-- numpy
-- pandas
-- matplotlib
-- seaborn
