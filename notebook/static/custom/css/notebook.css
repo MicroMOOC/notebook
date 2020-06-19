@@ -44,6 +44,10 @@
     display: none;
 }
 
+#notification_trusted {
+    display: none !important;
+}
+
 .navbar-btn.btn-xs {
     margin-top: 5px;
     margin-bottom: 4px;

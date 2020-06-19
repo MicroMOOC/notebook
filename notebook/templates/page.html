@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>{% block title %}Jupyter Notebook{% endblock %}</title>
+    <title>{% block title %}Coding Sandbox{% endblock %}</title>
     {% block favicon %}<link id="favicon" rel="shortcut icon" type="image/x-icon" href="{{static_url("base/images/favicon.ico") }}">{% endblock %}
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="{{static_url("components/jquery-ui/themes/smoothness/jquery-ui.min.css") }}" type="text/css" />
@@ -117,43 +117,10 @@ dir="ltr">
 
 <noscript>
     <div id='noscript'>
-      {% trans %}Jupyter Notebook requires JavaScript.{% endtrans %}<br>
+      {% trans %}requires JavaScript.{% endtrans %}<br>
       {% trans %}Please enable it to proceed. {% endtrans %}
   </div>
 </noscript>
-
-<div id="header" role="navigation" aria-label="{% trans %}Top Menu{% endtrans %}">
-  <div id="header-container" class="container">
-  <div id="ipython_notebook" class="nav navbar-brand"><a href="{{default_url}}
-    {%- if logged_in and token -%}?token={{token}}{%- endif -%}" title='{% trans %}dashboard{% endtrans %}'>
-      {% block logo %}<img src='{{static_url("base/images/logo.png") }}' alt='Jupyter Notebook'/>{% endblock %}
-  </a></div>
-
-  {% block headercontainer %}
-  {% endblock %}
-  
-  {% block header_buttons %}
-  
-  {% block login_widget %}
-
-    <span id="login_widget">
-      {% if logged_in %}
-        <button id="logout" class="btn btn-sm navbar-btn">{% trans %}Logout{% endtrans %}</button>
-      {% elif login_available and not logged_in %}
-        <button id="login" class="btn btn-sm navbar-btn">{% trans %}Login{% endtrans %}</button>
-      {% endif %}
-    </span>
-
-  {% endblock %}
-
-  {% endblock header_buttons %}
-  
-  </div>
-  <div class="header-bar"></div>
-
-  {% block header %}
-  {% endblock %}
-</div>
 
 <div id="site">
 {% block site %}
