@@ -73,21 +73,12 @@
  * @static
  */
 
-
 define([
-	'jquery',
-	'base/js/namespace',
 	'base/js/promises',
-	'./js/customtoolbar',
-	'./js/customactions'
-], function($,IPython, promises, customtoolbar, customactions) {
+	'./js/main'
+], function(promises, main) {
 	promises.app_initialized.then(function (appName) {
 		if (appName !== 'NotebookApp') return;
-		// overwrite actions
-		customactions.reload(IPython);
-		// overwrite 工具栏
-		customtoolbar.reload(IPython);
-		// 移除全屏遮盖层
-		$('#load_layer').remove();
+		main.init();
 	});
 });
