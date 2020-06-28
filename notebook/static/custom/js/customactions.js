@@ -9,7 +9,8 @@ define([
     'base/js/dialog',
     'base/js/i18n',
     './util/cUtils',
-], function($, dialog, i18n, cUtils) {
+    'base/js/utils',
+], function($, dialog, i18n, cUtils, utils) {
 
     // 自定义actions
     var custom_actions = {
@@ -57,6 +58,30 @@ define([
                     }
                 });
                 // end dialog
+            }
+        },
+        'download-file':{
+            help: '下载 (.py)',
+             icon: 'fa-cloud-download ',
+            handler : function (env) {
+                var notebook_path = utils.encode_uri_components(env.notebook.notebook_path);
+                // see notebook/static/notebook/js/menubar.js   133 line
+                var format = 'script', download = true;
+                var url = utils.url_path_join(
+                    env.notebook.base_url,
+                    'nbconvert',
+                    format,
+                    notebook_path
+                ) + "?download=" + download.toString();
+                // open download url
+                var w = window.open('', IPython._target);
+                if (IPython.notebook.dirty && IPython.notebook.writable) {
+                    IPython.notebook.save_notebook().then(function() {
+                        w.location = url;
+                    });
+                } else {
+                    w.location = url;
+                }
             }
         },
     };

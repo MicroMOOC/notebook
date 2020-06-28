@@ -38,6 +38,7 @@ define([
                 'jupyter-notebook:move-cell-up',
                 'jupyter-notebook:move-cell-down',
                 new toolbar.Button('jupyter-notebook:reset-file', {label: '重置'}),
+                new toolbar.Button('jupyter-notebook:download-file', {label: '下载'}),
             ],
             'func_btn'
           ],
