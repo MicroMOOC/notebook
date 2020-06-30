@@ -81,7 +81,7 @@
     color: #565859;
     font-size: 16px;
     padding-top: 10px;
-    background: #f6f6f6;
+    background: #F9F9F9;
 }
 
 .bottom-btn-box {
@@ -200,6 +200,6 @@ div.input_area {
 }
 
 .CodeMirror-scroll {
-    overflow: none !important;
+    min-height: 150px;
     margin-bottom: -25px !important;
 }
