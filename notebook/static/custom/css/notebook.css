@@ -72,3 +72,124 @@
 #maintoolbar {
     margin-left: 5px;
 }
+
+#notebook {
+    padding-top: 0  !important;
+}
+
+#content-file-info {
+    color: #565859;
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+.bottom-btn-box {
+    width: 100%; 
+    display: table;
+    margin: 10px 0;
+}
+
+.bottom-btn-box button {
+    font-family: PingFangSC-Medium;
+    font-size: 12px;
+    width: 70px;
+    box-sizing: border-box;
+    height: 30px;
+    border: 1px solid #00a3da;
+    line-height: 30px;
+    border-radius: 1px;
+    text-align: center;
+}
+
+.bottom-btn-box .left-btn {
+    float: left;
+    margin-right: 14px;
+    background: rgba(0,163,218,0.05);
+    color: #00a3da;
+}
+
+.bottom-btn-box .right-btn {
+    float: right;
+    background: #00a3da;
+    color: #fff;
+}
+
+#footer-btns {
+    margin-left: 10px;
+}
+
+div.cell {
+    margin-bottom: 20px;
+}
+
+div.cell.selected, .cell.selected.jupyter-soft-selected {
+    border: none !important;
+    padding-left: 15px;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+
+.edit_mode div.cell.selected {
+    border: none !important;
+    padding-left: 15px;
+}
+.edit_mode div.cell.selected:before {
+    position: absolute;
+    display: block;
+    top: -1px;
+    left: -1px;
+    width: 5px;
+    height: calc(100% +  2px);
+    content: '';
+    background: #66BB6A;
+}
+
+.edit_mode .cell.selected {
+    border: none !important;
+}
+
+
+.prompt_container {
+    display: none !important;
+}
+
+div.out_prompt_overlay {
+    width: 100%;
+}
+
+div.output_wrapper {
+    margin: 0;
+}
+
+#notebook-container {
+    padding: 5px 5px 15px 5px;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+div.input_area {
+    background: #EEE !important;
+    border-radius: 2px;
+}
+
+.notebook_app {
+    background: #fff;
+}
+
+.prompt {
+    display: none;
+}
+
+.CodeMirror {
+    min-height: 100px;
+}

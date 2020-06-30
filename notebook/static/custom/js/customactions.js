@@ -26,6 +26,13 @@ define([
                 env.notebook.delete_cell();
             }
         },
+        'run-selected-cell':{
+            help: 'run selected cell',
+            help_index : 'ej',
+            handler : function (env) {
+                env.notebook.execute_selected_cell();
+            }
+        },
         'reset-file':{
             help: '重置所有代码',
              icon: 'fa-undo',

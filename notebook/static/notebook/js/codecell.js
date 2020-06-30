@@ -112,6 +112,7 @@ define([
         this.input_prompt_number = null;
         this.celltoolbar = null;
         this.output_area = null;
+        this.uuid = utils.uuid();
 
         this.last_msg_id = null;
         this.completer = null;
@@ -158,25 +159,16 @@ define([
     CodeCell.prototype.create_element = function () {
         Cell.prototype.create_element.apply(this, arguments);
         var that = this;
-
+    
         var cell =  $('<div></div>').addClass('cell code_cell');
         cell.attr('tabindex','2');
-
+    
         var input = $('<div></div>').addClass('input');
         this.input = input;
-
+    
         var prompt_container = $('<div/>').addClass('prompt_container');
-
-        var run_this_cell = $('<div></div>').addClass('run_this_cell');
-        run_this_cell.prop('title', 'Run this cell');
-        run_this_cell.append('<i class="fa-step-forward fa"></i>');
-        run_this_cell.click(function (event) {
-            event.stopImmediatePropagation();
-            that.execute();
-        });
-
-        var prompt = $('<div/>').addClass('prompt input_prompt');
         
+        // 代码输入框
         var inner_cell = $('<div/>').addClass('inner_cell');
         this.celltoolbar = new celltoolbar.CellToolbar({
             cell: this, 
@@ -190,17 +182,29 @@ define([
             if (that.keyboard_manager) {
                 that.keyboard_manager.enable();
             }
-
+    
             that.code_mirror.setOption('readOnly', !that.is_editable());
         });
         this.code_mirror.on('keydown', $.proxy(this.handle_keyevent,this));
         $(this.code_mirror.getInputField()).attr("spellcheck", "false");
         inner_cell.append(input_area);
-        prompt_container.append(prompt).append(run_this_cell);
+        
         input.append(prompt_container).append(inner_cell);
-
+        cell.append(input);
+    
+        // func按钮
+        var funcs = $(`
+            <div class="bottom-btn-box">
+            <button id="` + this.uuid + `-run" class="left-btn">运行</button>
+            <button id="` + this.uuid + `-save" class="left-btn">保存</button>
+            <button id="` + this.uuid + `-insert" class="right-btn">+&nbsp;cell</button>
+            </div>
+        `);
+        cell.append(funcs);
+    
+        // 输出
         var output = $('<div></div>');
-        cell.append(input).append(output);
+        cell.append(output);
         this.element = cell;
         this.output_area = new outputarea.OutputArea({
             config: this.config,
@@ -216,6 +220,17 @@ define([
     CodeCell.prototype.bind_events = function () {
         Cell.prototype.bind_events.apply(this, arguments);
         var that = this;
+
+        var prefix = 'jupyter-notebook:';
+        $('#notebook-container').on('click', '#' + that.uuid + '-run', function(event){
+            IPython.actions.call(prefix + 'run-selected-cell', event);
+        });
+        $('#notebook-container').on('click', '#' + that.uuid + '-save', function(event){
+            IPython.actions.call(prefix + 'save-notebook', event);
+        });
+        $('#notebook-container').on('click', '#' + that.uuid + '-insert', function(event){
+            IPython.actions.call(prefix + 'insert-cell-below', event);
+        });
 
         this.element.focusout(
             function() { that.auto_highlight(); }

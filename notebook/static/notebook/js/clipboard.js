@@ -59,6 +59,7 @@ function paste(event) {
     return;
   }
   console.log(i18n.msg.sprintf(i18n.msg._('Clipboard types: %s'),event.clipboardData.types));
+  console.log(event.clipboardData, 'paste');
   cells = load_json(event.clipboardData);
   // console.log(cells);
   // Does this JSON look like cells?

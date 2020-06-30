@@ -196,6 +196,7 @@ define([
      */
     Cell.prototype.bind_events = function () {
         var that = this;
+
         // We trigger events so that Cell doesn't have to depend on Notebook.
         that.element.click(function (event) {
             that._on_click(event);

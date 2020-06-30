@@ -1282,7 +1282,6 @@ define([
      * @return {Cell|null} created cell or null
      */
     Notebook.prototype.insert_cell_at_index = function(type, index){
-
         var ncells = this.ncells();
         index = Math.min(index, ncells);
         index = Math.max(index, 0);
@@ -2584,6 +2583,17 @@ define([
         this.execute_cells(indices);
     };
 
+    /**
+     * Execute currently selected cell.
+     */
+    Notebook.prototype.execute_selected_cell = function (start, end) {
+        var cell = this.get_selected_cell();
+        if (cell) {
+            cell.execute();
+        }
+    };
+
+
     // Persistance and loading
 
     /**
@@ -2624,7 +2634,6 @@ define([
      * @param {object} data - JSON representation of a notebook
      */
     Notebook.prototype.fromJSON = function (data) {
-
         var content = data.content;
         var ncells = this.ncells();
         var i;

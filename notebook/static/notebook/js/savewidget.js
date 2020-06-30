@@ -135,13 +135,13 @@ define([
     SaveWidget.prototype.update_notebook_name = function () {
         var nbname = this.notebook.get_notebook_name();
         nbname = bidi.applyBidi(nbname);
-        this.element.find('span.filename').text(nbname);
+        this.element.find('span.filename').text(nbname + '.ipynb');
     };
 
 
     SaveWidget.prototype.update_document_title = function () {
         var nbname = this.notebook.get_notebook_name();
-        document.title = nbname + ' - Jupyter Notebook';
+        document.title = nbname;
     };
 
     SaveWidget.prototype.update_address_bar = function(){
