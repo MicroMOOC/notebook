@@ -85,7 +85,7 @@
 }
 
 .bottom-btn-box {
-    width: 100%; 
+    width: 98%; 
     display: table;
     margin: 10px 0;
 }
@@ -100,10 +100,7 @@
     line-height: 30px;
     border-radius: 1px;
     text-align: center;
-}
-
-.bottom-btn-box button:focus {
-    border: 1px solid #00a3da;
+    outline: none;
 }
 
 .bottom-btn-box .left-btn {
@@ -202,4 +199,21 @@ div.input_area {
 .CodeMirror-scroll {
     min-height: 150px;
     margin-bottom: -25px !important;
+}
+
+
+/* 滚动条样式 */
+.notebook_app::-webkit-scrollbar {
+    width: 4px;    
+}
+.notebook_app::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+}
+.notebook_app::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+
 }
