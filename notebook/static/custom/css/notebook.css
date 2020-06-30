@@ -82,6 +82,9 @@
     font-size: 16px;
     padding-top: 10px;
     background: #F9F9F9;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
 }
 
 .bottom-btn-box {
@@ -177,6 +180,10 @@ div.output_wrapper {
     background-color: transparent;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+
+#ipython-main-app {
+    margin-top: 50px;
 }
 
 div.input_area {
