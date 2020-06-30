@@ -25,8 +25,9 @@ RUN conda env create -n python3 -f .setup/environment-python3.yml && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager@1.0
 
 # 将项目中的notebook源代码替换到镜像中
-## 1. custom(css+js)
-COPY notebook/static/custom/ /opt/conda/lib/python3.7/site-packages/notebook/static/custom
+## css+js
+COPY notebook/static/ /opt/conda/lib/python3.7/site-packages/notebook/static
+
 ## 2. html file
 COPY notebook/templates/ /opt/conda/lib/python3.7/site-packages/notebook/templates
 

@@ -50,3 +50,7 @@ geckodriver.log
 *.code-workspace
 .history
 .vscode
+notebook/static/auth/js/main.min.js
+notebook/static/edit/js/main.min.js
+notebook/static/tree/js/main.min.js
+notebook/static/terminal/js/main.min.js
