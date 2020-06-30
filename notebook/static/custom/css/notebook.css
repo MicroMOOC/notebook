@@ -81,6 +81,7 @@
     color: #565859;
     font-size: 16px;
     padding-top: 10px;
+    background: #f6f6f6;
 }
 
 .bottom-btn-box {
@@ -99,6 +100,10 @@
     line-height: 30px;
     border-radius: 1px;
     text-align: center;
+}
+
+.bottom-btn-box button:focus {
+    border: 1px solid #00a3da;
 }
 
 .bottom-btn-box .left-btn {
@@ -178,7 +183,7 @@ div.output_wrapper {
 }
 
 div.input_area {
-    background: #EEE !important;
+    background: #F5F5F5!important;
     border-radius: 2px;
 }
 
@@ -191,5 +196,10 @@ div.input_area {
 }
 
 .CodeMirror {
-    min-height: 100px;
+    min-height: 150px;
+}
+
+.CodeMirror-scroll {
+    overflow: none !important;
+    margin-bottom: -10px !important;
 }
