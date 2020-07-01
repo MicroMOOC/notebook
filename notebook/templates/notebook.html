@@ -349,10 +349,12 @@ data-notebook-path="{{notebook_path | urlencode}}"
 
 {% block after_site %}
 
-
-<div id="footer-btns" class="bottom-btn-box">
-    <button id="btn-reset-file" class="left-btn">重置</button>
-    <button id="btn-download-file" class="left-btn">下载</button>
+<div class="container">
+    <div id="footer-btns" class="bottom-btn-box">
+        <button id="btn-reset-file" class="btn-c-white mr-10" title="重置当前所有代码">重置</button>
+        <button id="btn-download-file" class="btn-c-white mr-10" title="下载文件 (.py)">下载</button>
+        <button id="btn-save-file" class="btn-c-white" title="保存所有修改">保存</button>
+    </div>
 </div>
 
 <div id="pager">

@@ -195,9 +195,11 @@ define([
         // func按钮
         var funcs = $(`
             <div class="bottom-btn-box">
-            <button id="` + this.uuid + `-run" class="left-btn">运行</button>
-            <button id="` + this.uuid + `-save" class="left-btn">保存</button>
-            <button id="` + this.uuid + `-insert" class="right-btn">+&nbsp;cell</button>
+            <button id="` + this.uuid + `-run" class="btn-c-default mr-10" title="运行当前Cell">运行</button>
+            <div class="pull-right">
+                <button id="` + this.uuid + `-insert" class="btn-c-blue mr-10" title="插入Cell到下方">+&nbsp;Cell</button>
+                <button id="` + this.uuid + `-del" class="btn-c-gray" title="删除当前Cell">-&nbsp;Cell</button>
+            </div>
             </div>
         `);
         cell.append(funcs);
@@ -221,15 +223,18 @@ define([
         Cell.prototype.bind_events.apply(this, arguments);
         var that = this;
 
+        // 显示编辑框行号
+        that.toggle_line_numbers();
+
         var prefix = 'jupyter-notebook:';
         $('#notebook-container').on('click', '#' + that.uuid + '-run', function(event){
             IPython.actions.call(prefix + 'run-selected-cell', event);
         });
-        $('#notebook-container').on('click', '#' + that.uuid + '-save', function(event){
-            IPython.actions.call(prefix + 'save-notebook', event);
-        });
         $('#notebook-container').on('click', '#' + that.uuid + '-insert', function(event){
             IPython.actions.call(prefix + 'insert-cell-below', event);
+        });
+        $('#notebook-container').on('click', '#' + that.uuid + '-del', function(event){
+            IPython.actions.call(prefix + 'delete-cell', event);
         });
 
         this.element.focusout(

@@ -15,6 +15,7 @@ define([
     var id_actions_dict = {
         '#btn-reset-file' : 'reset-file',
         '#btn-download-file' : 'download-file',
+        '#btn-save-file' : 'save-notebook',
       };
       for(var idx in id_actions_dict){
               if (!id_actions_dict.hasOwnProperty(idx)){
