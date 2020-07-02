@@ -35,7 +35,7 @@ data-notebook-path="{{notebook_path | urlencode}}"
 {% endblock %}
 
 {% block header %}
-<div style="position:absolute;top:0;bottom:0;left:0;right:0;z-index:999;background:#FFFFFF;padding:5px;color:#565656;" id="load_layer">Loading...</div>
+<div style="position:absolute;top:0;bottom:0;left:0;right:0;z-index:999;background:#FFFFFF;padding:5px;color:#565656;" id="load_layer">正在初始化...</div>
 
 <div id="menubar-container" class="container" style="display: none;">
 
@@ -315,9 +315,9 @@ data-notebook-path="{{notebook_path | urlencode}}"
     </div>
 
     <div id="maintoolbar" class="navbar">
-    <div class="toolbar-inner navbar-inner navbar-nobg">
-        <div id="maintoolbar-container" class="container"></div>
-    </div>
+        <div class="toolbar-inner navbar-inner navbar-nobg">
+            <div id="maintoolbar-container" class="container"></div>
+        </div>
     </div>
 </div>
 
@@ -326,16 +326,22 @@ data-notebook-path="{{notebook_path | urlencode}}"
 
 {% block site %}
 
-
-<div id="content-file-info">
-    <!-- <span id="notebook_name">{{notebook_name}}</span>
-    <i class="fa fa-edit"></i> -->
-    <span id="save_widget" class="save_widget">
-	        <span id="notebook_name" class="filename"></span>
-		    <span class="checkpoint_status"></span>
-            <span class="autosave_status"></span>
-    </span>
-
+<div id="head-fixed">
+    <div class="row">
+        <div class="col-xs-8" style="padding-top: 8px;">
+            <span id="save_widget" class="save_widget">
+                <span id="notebook_name" class="filename"></span>
+                <span class="fileext"></span>
+                <span class="autosave_status"></span>
+            </span>
+        </div>
+        <div class="col-xs-4 text-right">
+            <div class="bottom-btn-box">
+                <button class="btn-save-file btn-c-default btn-icon btn-sm mr-5" title="保存所有修改"><i class="fa fa-save"></i></button>
+                <button class="btn-run-all btn-c-default btn-icon btn-sm" title="运行所有Cell"><i class="fa fa-forward"></i></button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="ipython-main-app">
@@ -351,9 +357,9 @@ data-notebook-path="{{notebook_path | urlencode}}"
 
 <div class="container">
     <div id="footer-btns" class="bottom-btn-box">
-        <button id="btn-reset-file" class="btn-c-white mr-10" title="重置当前所有代码">重置</button>
-        <button id="btn-download-file" class="btn-c-white mr-10" title="下载文件 (.py)">下载</button>
-        <button id="btn-save-file" class="btn-c-white" title="保存所有修改">保存</button>
+        <button class="btn-reset-file btn-c-white mr-10" title="重置当前所有代码">重置</button>
+        <button class="btn-download-file btn-c-white mr-10" title="下载文件 (.py)">下载</button>
+        <button class="btn-save-file btn-c-white" title="保存所有修改">保存</button>
     </div>
 </div>
 

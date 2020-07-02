@@ -35,6 +35,7 @@ define([
         });
         this.events.on('notebook_loaded.Notebook', function () {
             that.update_notebook_name();
+            that.update_notebook_file_ext();
             that.update_document_title();
         });
         this.events.on('notebook_saved.Notebook', function () {
@@ -47,7 +48,7 @@ define([
             that.update_address_bar();
         });
         this.events.on('notebook_save_failed.Notebook', function () {
-            that.set_save_status(i18n.msg._('Autosave Failed!'));
+            that.set_save_status('(保存失败~!)', true);
         });
         this.events.on('notebook_read_only.Notebook', function () {
             that.set_save_status('(read only)');
@@ -135,9 +136,13 @@ define([
     SaveWidget.prototype.update_notebook_name = function () {
         var nbname = this.notebook.get_notebook_name();
         nbname = bidi.applyBidi(nbname);
-        this.element.find('span.filename').text(nbname + '.ipynb');
+        this.element.find('span.filename').text(nbname);
     };
 
+    SaveWidget.prototype.update_notebook_file_ext = function () {
+        var ext = this.notebook.get_notebook_file_ext();
+        this.element.find('span.fileext').text(ext);
+    };
 
     SaveWidget.prototype.update_document_title = function () {
         var nbname = this.notebook.get_notebook_name();
@@ -156,8 +161,21 @@ define([
     };
 
 
-    SaveWidget.prototype.set_save_status = function (msg) {
+    SaveWidget.prototype.set_save_status = function (msg, error, hideTIme) {
+        this.element.find('span.autosave_status').show();
+        if (error) {
+            this.element.find('span.autosave_status').addClass('error');
+        } else {
+            this.element.find('span.autosave_status').removeClass('error');
+        }
         this.element.find('span.autosave_status').text(msg);
+        var that = this;
+        if (hideTIme) {
+            // auto hide status
+            setTimeout(function() {
+                that.element.find('span.autosave_status').hide();
+            }, hideTIme);
+        }
     };
 
     SaveWidget.prototype._set_last_checkpoint = function (checkpoint) {
@@ -219,7 +237,7 @@ define([
         if (dirty) {
             this.set_save_status(i18n.msg._("(unsaved changes)"));
         } else {
-            this.set_save_status(i18n.msg._("(autosaved)"));
+            this.set_save_status(i18n.msg._("(autosaved)"), false, 3 * 1000);
         }
     };
 

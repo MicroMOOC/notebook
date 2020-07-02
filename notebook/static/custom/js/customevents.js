@@ -13,9 +13,10 @@ define([
     var bindActions = function (IPython) {
     // 元素ID-对应action
     var id_actions_dict = {
-        '#btn-reset-file' : 'reset-file',
-        '#btn-download-file' : 'download-file',
-        '#btn-save-file' : 'save-notebook',
+        '.btn-reset-file' : 'reset-file',
+        '.btn-download-file' : 'download-file',
+        '.btn-save-file' : 'save-notebook',
+        '.btn-run-all' : 'run-all-cells',
       };
       for(var idx in id_actions_dict){
               if (!id_actions_dict.hasOwnProperty(idx)){

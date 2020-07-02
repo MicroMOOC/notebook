@@ -77,10 +77,10 @@
     padding-top: 0  !important;
 }
 
-#content-file-info {
+#head-fixed {
     color: #565859;
     font-size: 16px;
-    padding-top: 10px;
+    padding: 0px 10px 0 5px;
     background: #F9F9F9;
     position: fixed;
     width: 100%;
@@ -95,6 +95,8 @@
 
 .mr-10 { margin-right: 10px; }
 .ml-10 { margin-left: 10px; }
+.mr-5 { margin-right: 5px; }
+.ml-5 { margin-left: 5px; }
 
 .bottom-btn-box button {
     font-family: PingFangSC-Medium;
@@ -109,7 +111,6 @@
 }
 
 .bottom-btn-box .btn-c-default {
-    margin-right: 10px;
     background: rgba(0,163,218,0.05);
     color: #00a3da;
 }
@@ -123,6 +124,17 @@
     background: #AAA;
     color: #fff;
     border: 1px solid #AAA;
+}
+
+.bottom-btn-box .btn-icon {
+    width: 30px;
+}
+
+.bottom-btn-box .btn-sm {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+    padding: 0px;
 }
 
 .bottom-btn-box .btn-c-white {
