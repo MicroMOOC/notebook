@@ -13,7 +13,7 @@ USER jovyan
 
 # Autoupdate notebooks https://github.com/data-8/nbgitpuller
 # nbval for testing reproducibility
-RUN pip install git+https://github.com/data-8/gitautosync && \
+RUN pip install git+https://github.com/MicroMOOC/nbgitpuller && \
     jupyter serverextension enable --py nbgitpuller && \
     conda install -y -q nbval
 
