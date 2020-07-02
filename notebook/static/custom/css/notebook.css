@@ -115,15 +115,26 @@
     color: #00a3da;
 }
 
+.bottom-btn-box .btn-c-default:hover {
+    background: rgba(0,163,218,0.15);
+}
+
 .bottom-btn-box .btn-c-blue {
     background: #00a3da;
     color: #fff;
 }
 
+.bottom-btn-box .btn-c-blue:hover {
+    background: #03b5f0;
+}
+
 .bottom-btn-box .btn-c-gray {
-    background: #AAA;
+    background: rgba(170, 170, 170, 1);
     color: #fff;
     border: 1px solid #AAA;
+}
+.bottom-btn-box .btn-c-gray:hover {
+    background: rgba(170, 170, 170, 0.8);
 }
 
 .bottom-btn-box .btn-icon {
@@ -138,13 +149,17 @@
 }
 
 .bottom-btn-box .btn-md {
-    width: 45px;
+    width: 55px;
 }
 
 .bottom-btn-box .btn-c-white {
     background: #FFF;
     color: #00a3da;
     border-radius: 3px;
+}
+
+.bottom-btn-box .btn-c-white:hover {
+    background: #F1F1F1;
 }
 
 #footer-btns {
