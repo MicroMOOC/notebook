@@ -31,7 +31,7 @@ define([
     SaveWidget.prototype.bind_events = function () {
         var that = this;
         this.element.find('span.filename').click(function () {
-            that.rename_notebook({notebook: that.notebook});
+            // that.rename_notebook({notebook: that.notebook});
         });
         this.events.on('notebook_loaded.Notebook', function () {
             that.update_notebook_name();
@@ -48,7 +48,7 @@ define([
             that.update_address_bar();
         });
         this.events.on('notebook_save_failed.Notebook', function () {
-            that.set_save_status('(保存失败~!)', true);
+            that.set_save_status('(保存失败~!)', 'error');
         });
         this.events.on('notebook_read_only.Notebook', function () {
             that.set_save_status('(read only)');
@@ -161,12 +161,13 @@ define([
     };
 
 
-    SaveWidget.prototype.set_save_status = function (msg, error, hideTIme) {
+    SaveWidget.prototype.set_save_status = function (msg, cssName, hideTIme) {
         this.element.find('span.autosave_status').show();
-        if (error) {
-            this.element.find('span.autosave_status').addClass('error');
+        if (cssName) {
+            this.element.find('span.autosave_status').addClass(cssName);
         } else {
             this.element.find('span.autosave_status').removeClass('error');
+            this.element.find('span.autosave_status').removeClass('success');
         }
         this.element.find('span.autosave_status').text(msg);
         var that = this;
@@ -237,7 +238,7 @@ define([
         if (dirty) {
             this.set_save_status(i18n.msg._("(unsaved changes)"));
         } else {
-            this.set_save_status(i18n.msg._("(autosaved)"), false, 3 * 1000);
+            this.set_save_status(i18n.msg._("(autosaved)"), 'success', 3 * 1000);
         }
     };
 

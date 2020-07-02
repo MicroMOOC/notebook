@@ -2605,6 +2605,10 @@ define([
         return utils.splitext(this.notebook_name)[0];
     };
 
+    Notebook.prototype.get_notebook_file_ext = function () {
+        return utils.splitext(this.notebook_name)[1];
+    };
+
     /**
      * Setter method for this notebook's name.
      *

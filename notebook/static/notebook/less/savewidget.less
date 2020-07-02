@@ -21,13 +21,16 @@ span.save_widget {
         &:hover{
             // ensure body is lighter on dark palette, 
             // and vice versa
-            background-color:contrast(@body-bg, lighten(@body-bg,10%), darken(@body-bg,10%));
+            // background-color:contrast(@body-bg, lighten(@body-bg,10%), darken(@body-bg,10%));
         }
         .corner-all;
     }
 
     span.error {
         color: red;
+    }
+    span.success {
+        color: rgba(85, 163, 98, 1);
     }
 }
 

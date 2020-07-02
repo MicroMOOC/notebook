@@ -137,6 +137,10 @@
     padding: 0px;
 }
 
+.bottom-btn-box .btn-md {
+    width: 45px;
+}
+
 .bottom-btn-box .btn-c-white {
     background: #FFF;
     color: #00a3da;

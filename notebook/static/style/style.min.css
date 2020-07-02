@@ -12591,11 +12591,11 @@ span.save_widget span.filename {
   white-space: nowrap;
   border-radius: 2px;
 }
-span.save_widget span.filename:hover {
-  background-color: #e6e6e6;
-}
 span.save_widget span.error {
   color: red;
+}
+span.save_widget span.success {
+  color: #55a362;
 }
 [dir="rtl"] span.save_widget.pull-left {
   float: right !important;
