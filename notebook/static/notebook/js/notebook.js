@@ -1196,6 +1196,9 @@ define([
         if (new_ncells === 0) {
             this.insert_cell_below('code');
             new_ncells = 1;
+        } else if (new_ncells === 1) {
+          var lastCell = this.get_cell(0);
+          lastCell.hide_delete_cell_btn();
         }
 
         var cursor_ix_after = this.get_selected_index();
@@ -1338,8 +1341,15 @@ define([
                 this.set_dirty(true);
             }
         }
-        return cell;
+        
+        ncells = this.ncells();
+        if (ncells ==1) {
+            this.get_cell(0).hide_delete_cell_btn();
+        } else if(ncells > 1) {
+          this.get_cell(0).show_delete_cell_btn();
+        }
 
+        return cell;
     };
 
     /**

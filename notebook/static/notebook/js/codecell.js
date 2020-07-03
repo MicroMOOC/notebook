@@ -197,8 +197,8 @@ define([
             <div class="bottom-btn-box">
             <button id="` + this.uuid + `-run" class="btn-c-default mr-10" title="运行当前Cell"><i class="fa fa-play"></i>&nbsp;运行</button>
             <div class="pull-right">
-                <button id="` + this.uuid + `-insert" class="btn-c-blue mr-10" title="插入Cell到下方">+&nbsp;Cell</button>
-                <button id="` + this.uuid + `-del" class="btn-c-gray" title="删除当前Cell">-&nbsp;Cell</button>
+                <button id="` + this.uuid + `-insert" class="btn-c-blue" title="插入Cell到下方">+&nbsp;Cell</button>
+                <button id="` + this.uuid + `-del" class="btn-c-gray  ml-10" title="删除当前Cell">-&nbsp;Cell</button>
             </div>
             </div>
         `);
@@ -248,6 +248,14 @@ define([
         });
     };
 
+
+    CodeCell.prototype.hide_delete_cell_btn = function () {
+        $('#' + this.uuid + '-del').hide();
+    }
+
+    CodeCell.prototype.show_delete_cell_btn = function () {
+        $('#' + this.uuid + '-del').show();
+    }
 
     /**
      *  This method gets called in CodeMirror's onKeyDown/onKeyPress
