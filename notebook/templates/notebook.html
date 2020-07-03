@@ -328,16 +328,16 @@ data-notebook-path="{{notebook_path | urlencode}}"
 
 <div id="head-fixed">
     <div class="row">
-        <div class="col-xs-7" style="padding-top: 8px;">
+        <div class="col-xs-6" style="padding-top: 8px;">
             <span id="save_widget" class="save_widget">
-                <span id="notebook_name" class="filename" title="文件名"></span>
-                <span class="fileext"></span>
+                <span id="notebook_name" class="filename" title="{{notebook_name}}"></span>
+                <span class="fileext" title="{{notebook_name}}"></span>
                 <span class="autosave_status"></span>
                 <!-- <i class="fa fa-pencil ml-10" title="点击文件名进行文件重命名"  style="color: #00a3da;"></i> -->
             </span>
             
         </div>
-        <div class="col-xs-5 text-right">
+        <div class="col-xs-6 text-right">
             <div class="bottom-btn-box">
                 <button class="btn-run-all btn-c-default btn-md" title="运行全部Cell"><i  class="fa fa-play"></i>&nbsp;运行</button>
                 <button class="btn-save-file btn-c-default btn-md mr-5" title="保存所有修改"><i class="fa fa-save"></i>&nbsp;保存</button>
