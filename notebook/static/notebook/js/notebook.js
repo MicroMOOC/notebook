@@ -653,6 +653,34 @@ define([
         });
     };
 
+    Notebook.prototype.get_code_cells = function () {
+      var rets = [];
+      this.get_cell_elements().toArray().forEach(function (e) {
+        var cell = $(e).data("cell");
+        if (cell.cell_type === 'code') {
+          rets.push(cell);
+        }
+      });
+      return rets;
+  };
+
+    Notebook.prototype.get_first_code_cell_index = function () {
+      var ret = 0;
+      this.get_cell_elements().toArray().forEach(function (e, index) {
+        var cell = $(e).data("cell");
+        if (cell.cell_type === 'code') {
+          ret = index;
+          return;
+        }
+      });
+      return ret;
+  };
+
+Notebook.prototype.is_code_cell = function (index) {
+    var cell = this.get_cell(index);
+    return cell ? cell.cell_type === 'code' : false;
+  };
+
     /**
      * Get a Cell objects from this notebook.
      * 
@@ -858,6 +886,7 @@ define([
         moveanchor = (moveanchor===undefined)? true : moveanchor;
 
         if (this.is_valid_cell_index(index)) {
+            if (!this.is_code_cell(index)) return this; 
             var sindex = this.get_selected_index();
             if (sindex !== null && index !== sindex) {
                 // If we are about to select a different cell, make sure we are
@@ -1196,9 +1225,12 @@ define([
         if (new_ncells === 0) {
             this.insert_cell_below('code');
             new_ncells = 1;
-        } else if (new_ncells === 1) {
-          var lastCell = this.get_cell(0);
-          lastCell.hide_delete_cell_btn();
+        }
+
+        // 最剩后一个code编辑框时，隐藏删除按钮
+        var codeCells = this.get_code_cells();
+        if (codeCells.length === 1) {
+          codeCells[0].hide_delete_cell_btn();
         }
 
         var cursor_ix_after = this.get_selected_index();
@@ -1342,13 +1374,12 @@ define([
             }
         }
         
-        ncells = this.ncells();
-        if (ncells ==1) {
-            this.get_cell(0).hide_delete_cell_btn();
-        } else if(ncells > 1) {
-          this.get_cell(0).show_delete_cell_btn();
+        var codeCells = this.get_code_cells();
+        if (codeCells.length === 1) {
+            codeCells[0].hide_delete_cell_btn();
+        } else if(codeCells.length > 1) {
+            codeCells[0].show_delete_cell_btn();
         }
-
         return cell;
     };
 
@@ -3217,8 +3248,9 @@ define([
             this.insert_cell_below('code');
             this.edit_mode(0);
         } else {
-            this.select(0);
-            this.handle_command_mode(this.get_cell(0));
+            var selectIndex = this.get_first_code_cell_index();
+            this.select(selectIndex);
+            this.handle_command_mode(this.get_cell(selectIndex));
         }
         this.set_dirty(false);
         this.scroll_to_top();
