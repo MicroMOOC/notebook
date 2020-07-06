@@ -80,11 +80,12 @@
 #head-fixed {
     color: #565859;
     font-size: 16px;
-    padding: 0px 10px 0 5px;
+    padding: 0px 5px;
     background: #F9F9F9;
     position: fixed;
     width: 100%;
     z-index: 999;
+    box-shadow:0px 2px 10px 0 rgba(9, 24, 145, 0.1); 
 }
 
 .bottom-btn-box {
@@ -148,8 +149,8 @@
     padding: 0px;
 }
 
-.bottom-btn-box .btn-md {
-    width: 56px;
+.bottom-btn-box .btn-auto {
+    width: auto;
 }
 
 .bottom-btn-box .btn-c-white {
@@ -249,6 +250,26 @@ div.input_area {
 .CodeMirror-scroll {
     min-height: 150px;
     margin-bottom: -25px !important;
+}
+
+.run-tips {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: block;
+    background: #ddd;
+    font-size: 12px;
+    color: #444;
+    padding: 1px 8px;
+    border-radius: 1px;
+}
+
+.run-tips.error {
+    color: red;
+}
+
+.run-tips.success {
+    color: green;
 }
 
 
