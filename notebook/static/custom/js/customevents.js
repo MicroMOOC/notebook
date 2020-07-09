@@ -44,7 +44,7 @@ define([
         if (data.value) {
           set_run_tips('未保存改变');
       } else {
-        set_run_tips('保存成功', 'success', 3 * 1000);
+        set_run_tips('保存成功', 'success');
       }
       });
   }
