@@ -328,9 +328,12 @@ data-notebook-path="{{notebook_path | urlencode}}"
 
 <div id="head-fixed">
     <div class="row">
-        <div class="col-xs-12 text-right">
+        <div class="col-xs-3">
+            <div class="run-tips" style="display: none;"></div>
+        </div>
+        <div class="col-xs-9 text-right" style="padding-right: 2px;">
             <div class="bottom-btn-box">
-                <button class="btn-run-all btn-c-default btn-auto mr-5" title="运行全部代码"><i  class="fa fa-play"></i>&nbsp;运行全部</button>
+                <button class="btn-run-all btn-c-default btn-auto mr-5" title="运行全部代码">&nbsp;<i  class="fa fa-play"></i>&nbsp;运行全部</button>
                 <button class="btn-save-file btn-c-default btn-auto mr-5" title="保存所有修改"><i class="fa fa-save"></i>&nbsp;保存</button>
                 <button class="btn-reset-file btn-c-default btn-auto mr-5" title="重置当前所有代码"><i class="fa fa-undo"></i>&nbsp;重置</button>
                 <button class="btn-download-file btn-c-default btn-auto" title="下载文件 (.py)"><i class="fa fa-cloud-download"></i>&nbsp;下载</button>
@@ -349,8 +352,6 @@ data-notebook-path="{{notebook_path | urlencode}}"
 {% endblock %}
 
 {% block after_site %}
-<div class="run-tips" style="display: none;"></div>
-
 <div id="pager">
     <div id="pager-contents">
         <div id="pager-container" class="container"></div>
