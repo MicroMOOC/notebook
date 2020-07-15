@@ -24,8 +24,6 @@ RUN conda env create -n python3 -f .setup/environment-python3.yml && \
     # Jupyterlab component for ipywidgets (must match jupyterlab version) \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager@1.0
 
-RUN source activate python3
-
 # 将项目中的notebook源代码替换到镜像中
 ## css+js
 COPY notebook/static/ /opt/conda/lib/python3.7/site-packages/notebook/static
