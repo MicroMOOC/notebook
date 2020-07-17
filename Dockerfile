@@ -18,7 +18,9 @@ RUN pip install git+https://github.com/MicroMOOC/nbgitpuller && \
     conda install -y -q nbval
 
 # 安装依赖
-RUN pip install numpy pandas matplotlib seaborn --upgrade
+RUN mkdir .setup
+ADD requirements.txt .setup/
+RUN pip install -r .setup/requirements.txt
 
 # 将项目中的notebook源代码替换到镜像中
 ## css+js
