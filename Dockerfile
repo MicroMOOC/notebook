@@ -17,6 +17,12 @@ RUN pip install git+https://github.com/MicroMOOC/nbgitpuller && \
     jupyter serverextension enable --py nbgitpuller && \
     conda install -y -q nbval
 
+## upgrade jupyterlab
+RUN conda install -c conda-forge jupyterlab=2
+
+## install jupyterlab plugins
+RUN jupyter labextension install @suimz/jupyterlab-nierus
+
 # 安装依赖
 RUN mkdir .setup
 ADD requirements.txt .setup/
