@@ -11,6 +11,12 @@ RUN apt-get update -y && \
 USER jovyan
 # Default workdir: /home/jovyan
 
+# Set the locale
+RUN locale-gen zh_CN.UTF-8  
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
+
 # Autoupdate notebooks https://github.com/data-8/nbgitpuller
 # nbval for testing reproducibility
 RUN pip install git+https://github.com/MicroMOOC/nbgitpuller && \
