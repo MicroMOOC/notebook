@@ -2,6 +2,13 @@ FROM jupyter/base-notebook:213760e5674e
 MAINTAINER ome-devel@lists.openmicroscopy.org.uk
 
 USER root
+
+# Set the locale
+RUN locale-gen zh_CN.UTF-8  
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
+
 RUN apt-get update -y && \
     apt-get install -y \
         build-essential \
@@ -10,12 +17,6 @@ RUN apt-get update -y && \
 
 USER jovyan
 # Default workdir: /home/jovyan
-
-# Set the locale
-RUN locale-gen zh_CN.UTF-8  
-ENV LANG zh_CN.UTF-8
-ENV LANGUAGE zh_CN.UTF-8
-ENV LC_ALL zh_CN.UTF-8
 
 # Autoupdate notebooks https://github.com/data-8/nbgitpuller
 # nbval for testing reproducibility
