@@ -21,7 +21,7 @@ RUN pip install git+https://github.com/MicroMOOC/nbgitpuller && \
 RUN conda install -c conda-forge jupyterlab=2
 
 ## install jupyterlab plugins
-RUN jupyter labextension install @suimz/jupyterlab-nierus
+# RUN jupyter labextension install @suimz/jupyterlab-nierus
 
 # 安装依赖
 RUN mkdir .setup
