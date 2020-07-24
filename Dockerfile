@@ -2,6 +2,13 @@ FROM jupyter/base-notebook:213760e5674e
 MAINTAINER ome-devel@lists.openmicroscopy.org.uk
 
 USER root
+
+# Set the locale
+RUN locale-gen zh_CN.UTF-8  
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
+
 RUN apt-get update -y && \
     apt-get install -y \
         build-essential \
@@ -16,6 +23,12 @@ USER jovyan
 RUN pip install git+https://github.com/MicroMOOC/nbgitpuller && \
     jupyter serverextension enable --py nbgitpuller && \
     conda install -y -q nbval
+
+## upgrade jupyterlab
+RUN conda install -c conda-forge jupyterlab=2
+
+## install jupyterlab plugins
+RUN jupyter labextension install @suimz/jupyterlab-nierus
 
 # 安装依赖
 RUN mkdir .setup
