@@ -21,9 +21,13 @@ USER jovyan
 # 卸载已有的jupyterlab
 RUN conda uninstall jupyterlab
 
+WORKDIR /
+
 # 拉取jupyterlab源码
 RUN git clone https://github.com/MicroMOOC/jupyterlab.git
-RUN cd jupyterlab
+
+WORKDIR /jupyterlab
+
 # 本地安装jupyterlab
 RUN pip install .
 RUN jlpm install
