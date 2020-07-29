@@ -18,6 +18,16 @@ RUN apt-get update -y && \
 USER jovyan
 # Default workdir: /home/jovyan
 
+# 卸载已有的jupyterlab
+RUN conda uninstall jupyterlab
+
+# 拉取jupyterlab源码
+RUN git clone git@github.com:MicroMOOC/jupyterlab.git
+RUN cd jupyterlab
+# 本地安装jupyterlab
+RUN pip install .
+RUN jlpm install
+
 # Autoupdate notebooks https://github.com/data-8/nbgitpuller
 # nbval for testing reproducibility
 RUN pip install git+https://github.com/MicroMOOC/nbgitpuller && \
