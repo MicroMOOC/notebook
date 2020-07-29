@@ -22,7 +22,7 @@ USER jovyan
 RUN conda uninstall jupyterlab
 
 # 拉取jupyterlab源码
-RUN git clone git@github.com:MicroMOOC/jupyterlab.git
+RUN git clone https://github.com/MicroMOOC/jupyterlab.git
 RUN cd jupyterlab
 # 本地安装jupyterlab
 RUN pip install .
