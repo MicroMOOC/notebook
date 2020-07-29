@@ -31,6 +31,9 @@ WORKDIR $HOME/jupyterlab
 # 本地安装jupyterlab
 RUN pip install .
 RUN jlpm install
+RUN jlpm run build && \
+    jlpm run build:core && \
+    jupyter lab build
 
 # Autoupdate notebooks https://github.com/data-8/nbgitpuller
 # nbval for testing reproducibility
