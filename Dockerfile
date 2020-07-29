@@ -15,8 +15,6 @@ RUN apt-get update -y && \
         curl \
         git
 
-USER jovyan
-# Default workdir: /home/jovyan
 
 # 卸载已有的jupyterlab
 RUN conda uninstall jupyterlab
@@ -27,6 +25,10 @@ WORKDIR /
 RUN git clone https://github.com/MicroMOOC/jupyterlab.git
 
 WORKDIR /jupyterlab
+
+
+USER jovyan
+# Default workdir: /home/jovyan
 
 # 本地安装jupyterlab
 RUN pip install .
