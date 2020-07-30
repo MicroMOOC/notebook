@@ -34,11 +34,17 @@ RUN git checkout 2.2.x-develop
 
 # 本地安装jupyterlab
 RUN pip install . && \
-    jlpm install
+    jlpm install && \
+    jlpm run build && \
+    jlpm run build:core && \
+    jupyter lab build
 
 # 安装lab插件
-RUN jupyter labextension install @suimz/jupyterlab-nierus
+RUN jupyter labextension link ./packages/filebrowser
+RUN jupyter labextension link ./packages/mainmenu
+# RUN jupyter labextension install @suimz/jupyterlab-nierus
 
+WORKDIR $HOME
 
 ######### notebook源码替换 ##########
 # 将项目中的notebook源代码替换到镜像中
