@@ -18,18 +18,18 @@ RUN apt-get update -y && \
 USER jovyan
 # Default workdir: /home/jovyan
 
-######### 源码安装jupyterlab ########
+WORKDIR $HOME
+
+# 安装jupyterlab
 # 卸载已有的jupyterlab
 RUN conda uninstall jupyterlab
-
-WORKDIR $HOME
 
 # 拉取jupyterlab源码
 RUN git clone https://github.com/MicroMOOC/jupyterlab.git
 
 WORKDIR $HOME/jupyterlab
 
-# 切换到2.2.x开发分支
+# 切换到2.2.x开发分支，注意：线上的Dockerfile，此处的分支需要修改为2.2.x
 RUN git checkout 2.2.x-develop
 
 # 本地安装jupyterlab
@@ -46,19 +46,20 @@ RUN jupyter labextension install @suimz/jupyterlab-nierus
 
 WORKDIR $HOME
 
-######### notebook源码替换 ##########
+
+# 安装Notebook
 # 将项目中的notebook源代码替换到镜像中
 COPY notebook/static/ /opt/conda/lib/python3.7/site-packages/notebook/static
 COPY notebook/templates/ /opt/conda/lib/python3.7/site-packages/notebook/templates
 
 
-######### 安装nbgitpuller ##########
+# 安装nbgitpuller
 RUN pip install git+https://github.com/MicroMOOC/nbgitpuller && \
     jupyter serverextension enable --py nbgitpuller && \
     conda install -y -q nbval
 
 
-#########  安装python开发包  ########
+# 安装python开发包
 # 安装依赖
 RUN mkdir .setup
 ADD requirements.txt .setup/
