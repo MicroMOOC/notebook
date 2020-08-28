@@ -40,8 +40,8 @@ RUN pip install . && \
     jupyter lab build
 
 # 安装lab插件
-RUN jupyter labextension install /home/jovyan/jupyterlab/packages/filebrowser
-RUN jupyter labextension install /home/jovyan/jupyterlab/packages/notebook-extension
+RUN jupyter labextension link ./packages/filebrowser
+RUN jupyter labextension link /home/jovyan/jupyterlab/packages/notebook-extension
 RUN jupyter labextension install @suimz/jupyterlab-nierus
 
 
