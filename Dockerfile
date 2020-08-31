@@ -41,7 +41,6 @@ RUN pip install . && \
 
 # 安装lab插件
 RUN jupyter labextension link ./packages/filebrowser
-RUN jupyter labextension link ./packages/codemirror
 RUN jupyter labextension install @suimz/jupyterlab-nierus
 
 
@@ -66,7 +65,7 @@ RUN mkdir .setup
 ADD requirements.txt .setup/
 RUN pip install -r .setup/requirements.txt
 
-# 解决matplotlib库画图中文乱码
+# 解决Matplotlib绘图库中文乱码
 COPY fonts/SimHei.ttf /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/
 COPY fonts/matplotlibrc /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
 
