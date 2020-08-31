@@ -66,8 +66,8 @@ ADD requirements.txt .setup/
 RUN pip install -r .setup/requirements.txt
 
 # 解决Matplotlib绘图库中文乱码
-COPY fonts/SimHei.ttf /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/
-COPY fonts/matplotlibrc /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
+COPY fonts/SimHei.ttf /usr/share/fonts/
+# COPY fonts/matplotlibrc /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
 
 # Autodetects jupyterhub and standalone modes
 CMD ["start-notebook.sh"]
