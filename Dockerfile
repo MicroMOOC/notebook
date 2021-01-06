@@ -13,7 +13,10 @@ RUN apt-get update -y && \
     apt-get install -y \
         build-essential \
         curl \
-        git
+        git  \
+        libgl1-mesa-glx \
+        python-tk  \
+        python-opencv -y --allow-unauthenticated
 
 USER jovyan
 # Default workdir: /home/jovyan
